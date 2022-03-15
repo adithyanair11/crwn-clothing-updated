@@ -5,31 +5,4 @@
     padding:20px 80px;
 }
 
-.directory-menu{
-    width:100%;
-    display: flex;
-    gap:1em;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
 
-.menu-item{
-    width:30%;
-    height:240px;
-    flex: 1 1 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border:1px solid #000;
-    cursor: pointer;
-}
-
-.content{
-    height:90px;
-    padding: 0 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border:1px solid #000;
-}

@@ -1,0 +1,40 @@
+.menu-item{
+    width:30%;
+    height:240px;
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+.large{
+    height: 380px;
+}
+.content{
+    position: absolute;
+    height:90px;
+    padding: 0 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255,0.6);
+}
+.sub-title{
+    font-weight: bold;
+}
+
+.background-image{
+    width:100%;
+    height:100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: transform 4s cubic-bezier(0.25,0.45,0.45,0.95);
+}
+
+.background-image:hover{
+    transform: scale(1.1);
+}
