@@ -1,10 +1,15 @@
-import './App.css';
-import { HomePage } from './pages/homepage.component';
-function App() {
+import {Routes,Route} from 'react-router-dom';
+import {Navigation} from './routes/navigation/navigation.component';
+import { Home } from "./routes/home/home.component";
+import { SignIn } from './routes/signIn/sign-in.component';
+const App = () => {
   return (
-    <div>
-      <HomePage />
-    </div>
+    <Routes>
+      <Route path='/' element={<Navigation />}> 
+        <Route index element={<Home />} />
+        <Route path='/signin' element={<SignIn />} />
+      </Route>
+    </Routes>
   );
 }
 
