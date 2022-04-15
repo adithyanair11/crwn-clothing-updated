@@ -1,6 +1,6 @@
 import {initializeApp} from 'firebase/app';
-import {getAuth,signInWithRedirect,signInWithPopup,GoogleAuthProvider} from 'firebase/auth';
-import {getFirestore,doc,getDoc,setDoc, connectFirestoreEmulator} from 'firebase/firestore';
+import {getAuth,signInWithPopup,GoogleAuthProvider,createUserWithEmailAndPassword} from 'firebase/auth';
+import {getFirestore,doc,getDoc,setDoc} from 'firebase/firestore';
 const config = {
     apiKey: "AIzaSyBHIvCMWs63XEUa-VOTUjSfbEtp4iAemJ0",
     authDomain: "crwn-new-db.firebaseapp.com",
@@ -22,9 +22,11 @@ const config = {
 
   export const signInWithGooglePopUp = () => signInWithPopup(auth,provider);
 
+
+
   export const db = getFirestore();
 
-  export const createUserDocumentFromAuth = async(userAuth) => {
+  export const createUserDocumentFromAuth = async(userAuth,additionalInfo) => {
     const userDocRef = doc(db,'users',userAuth.uid);
     const userSnapShot = await getDoc(userDocRef);
     if(!userSnapShot.exists()){
@@ -34,11 +36,17 @@ const config = {
             await setDoc(userDocRef, {
                 displayName,
                 email,
-                createdAt
+                createdAt,
+                ...additionalInfo
             })
         }catch(err){
             console.log(err);
         }
     }
     return userDocRef;
+  }
+
+  export const createAuthUserWithEmailAndPassword = async (email,password) => {
+      if(!email || !password) return;
+      return await createUserWithEmailAndPassword(auth,email,password)
   }
