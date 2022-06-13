@@ -1,5 +1,5 @@
 import React from "react";
-import './directory-menu.styles.css';
+import {DirectoryMenuContainer} from './directory-menu.styles';
 import { MenuItem } from "../menu-item/menu-item.component";
 
 export class DirectoryMenu extends React.Component{
@@ -44,7 +44,7 @@ export class DirectoryMenu extends React.Component{
     }
     render(){
         return(
-            <div className='directory-menu'>
+            <DirectoryMenuContainer>
                 {
                     this.state.sections.map(({title,imageUrl,id,size}) => {
                         return(
@@ -52,7 +52,7 @@ export class DirectoryMenu extends React.Component{
                         )
                     })
                 }
-            </div>
+            </DirectoryMenuContainer>
         );
     }
 }

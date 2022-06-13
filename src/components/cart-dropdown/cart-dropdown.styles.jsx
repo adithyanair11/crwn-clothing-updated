@@ -1,4 +1,6 @@
-.cart-dropdown-container{
+import styled from 'styled-components'
+
+export const CartDropDownContainer = styled.div `
     position: absolute;
     height: 340px;
     width:240px;
@@ -10,17 +12,20 @@
     top:90px;
     right:40px;
     z-index: 5;
-}
+    
+    button{
+        margin-top: auto;
+    }
+`
 
-.cart-items{
+export const CartItems = styled.div `
     height: 240px;
     display: flex;
     flex-direction: column;
     overflow: scroll;
-    overflow-y:hidden;
     overflow-x: hidden;
-}
+`
 
-.cart-dropdown-container button{
-    margin-top:auto;
-}
+export const EmptyMessage = styled.span ` 
+    margin: 50% auto;
+`

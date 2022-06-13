@@ -1,30 +1,33 @@
-.navigation{
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+export const NavigationContainer = styled.div`
     height:70px;
     width:100%;
     display: flex;;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 25px;
-}
+`
 
-.logo-container{
+export const LogoContainer = styled(Link)`
     height:100%;
     width:100%;
     padding:25px;
-}
+`
 
-.links-container{
+export const NavLinksContainer = styled.div`
     width:50%;
     height: 100%;
     display: flex;
     justify-content: end;
     align-items: center;
     gap:1em;
-}
+`
 
-.nav-link{
+export const NavLink = styled(Link)`
     text-decoration: none;
     font-weight: bold;
     font-size: 1.2rem;
     color:black;
-}
+`
