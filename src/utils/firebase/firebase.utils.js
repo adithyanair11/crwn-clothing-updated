@@ -48,14 +48,10 @@ export const addCollectionAndDocuments = async (collectionKey,objectsToAdd) => {
 export const getCategoriesAndDocuments = async() => {
     const collectionRef = collection(db,'categories');
     const q = query(collectionRef);
-
+  // mapping the docs to an array to buid the map logic with redux selectors
     const querySnapShot = await getDocs(q);
-    const categoryMap = querySnapShot.docs.reduce((acc,docSnapShot) => {
-        const {title,items} = docSnapShot.data();
-        acc[title.toLowerCase()] = items;
-        return acc;
-    },{})
-    return categoryMap;
+    return querySnapShot.docs.map(docSnapShot => docSnapShot.data());
+
 }
 
 // creating a user and adding to the database
@@ -64,7 +60,7 @@ export const getCategoriesAndDocuments = async() => {
     const userSnapShot = await getDoc(userDocRef);
     if(!userSnapShot.exists()){
         const {displayName,email} = userAuth;
-        const createdAt = new Date;
+        const createdAt = new Date();
         try{
             await setDoc(userDocRef, {
                 displayName,

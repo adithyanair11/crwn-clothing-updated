@@ -1,19 +1,22 @@
 import {CheckItem,CheckItemSpan,CheckItemImage,Arrows,Remove} from './checkout-item.styles';
-import { useContext } from 'react';
-import { CartItemsContext } from '../../context/cart-items.context';
+import { addItemToCart,subItemFromCart,removeItemFromCart } from '../../store/cart/cart.action';
+import { selectCartItems } from '../../store/cart/cart.selector';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 export const CheckOutItem = ({cartItem}) => {
+    const dispatch = useDispatch();
     const {imageUrl,name,quantity,price} = cartItem;
-    const {addItemToCart,subItemFromCart,removeItemFromCart} = useContext(CartItemsContext);
+    const cartItems = useSelector(selectCartItems);
 
     const increaseQuantity = () => {
-        return addItemToCart(cartItem);
+        return dispatch(addItemToCart(cartItems,cartItem));
     }
     const decreaseQuantity = () => {
-        return subItemFromCart(cartItem);
+        return dispatch(subItemFromCart(cartItems,cartItem));
     }
     const removeItem = () => {
-        return removeItemFromCart(cartItem);
+        return dispatch(removeItemFromCart(cartItems,cartItem));
     }
     return(
         <CheckItem>
